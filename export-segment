@@ -21,6 +21,7 @@ parser.add_argument('-c', '--count', action='store_true',
                     default=False)
 parser.add_argument('-x', '--no-extract', action='store_true',
                     help='do not extract zip archive')
+parser.add_argument('--app', help='application code')
 parser.add_argument('seglang', help='seglang filter expression')
 args = parser.parse_args()
 
@@ -30,8 +31,9 @@ auth.cmdline_validate(parser, args)
 
 request = {
   'auth': args.token,
+  'applicationCode': args.app,
   'filterExpression': args.seglang,
-  'exportCsv': not args.count,
+  'generateExport': not args.count,
 }
 
 resp = requests.post(const.URL_EXPORT_SEGMENT, json=request)
@@ -63,7 +65,7 @@ while True:
         if status == 'completed':
             utils.draw_progress(100, 100)
             segmentSize = int(json['devices_count'])
-            exportFileUrl = json['csv_filename']
+            exportFileUrl = json['filename']
             break
         if status == 'failed':
             exit(1)
