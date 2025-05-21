@@ -25,7 +25,7 @@ All scripts that require authorization accept `--token` argument.
 
 Example:
 ```commandline
-./export-segment --token XXXXX 'A("00000-00000")'
+./export-segment --token XXXXX --app 00000-00000 'A("00000-00000")'
 ```
 
 ### `.env` file
@@ -36,15 +36,15 @@ TOKEN=xxxxxxx
 
 Then run script without `--token` argument:
 ```commandline
-./export-segment 'A("00000-00000")'
-./export-segment 'A("11111-11111")'
+./export-segment --app 00000-00000 'A("00000-00000")'
+./export-segment --app 00000-00000 'A("11111-11111")'
 ```
 
 ### Environment variable `TOKEN`
 ```commandline
 TOKEN=xxxxxxx # setup token once
-./export-segment 'A("00000-00000")' # then run several scripts
-./export-segment 'A("11111-11111")'
+./export-segment --app 00000-00000 'A("00000-00000")' # then run several scripts
+./export-segment --app 00000-00000 'A("11111-11111")'
 ```
 
 ## export-segment
@@ -53,7 +53,7 @@ Allows to export device data from Pushwoosh to CSV file.
 Example:
 
 ```commandline
-./export-segment 'A("00000-00000", [ios], [with_tokens]) * AT("00000-00000", "Last Application Open", daysago, gt, 3)' 
+./export-segment --app 00000-00000 'A("00000-00000", [ios], [with_tokens]) * AT("00000-00000", "Last Application Open", daysago, gt, 3)' 
 ```
 
 Supports any [seglang](https://docs.pushwoosh.com/platform-docs/api-reference/messages#sets) expression.
