@@ -27,7 +27,7 @@ Example:
 ```commandline
 ./export-segment --token XXXXX --app 00000-00000 'A("00000-00000")'
 ```
-
+*Server-type API token is required to execute the export-segment request.*
 ### `.env` file
 Put the following content into the `.env` file to the project's directory:
 ```commandline
@@ -53,10 +53,10 @@ Allows to export device data from Pushwoosh to CSV file.
 Example:
 
 ```commandline
-./export-segment --app 00000-00000 'A("00000-00000", [ios], [with_tokens]) * AT("00000-00000", "Last Application Open", daysago, gt, 3)' 
+./export-segment --app 00000-00000 'A("00000-00000", ["ios"], [with_tokens]) * AT("00000-00000", "Last Application Open", daysago, gt, 3)' 
 ```
 
-Supports any [seglang](https://docs.pushwoosh.com/platform-docs/api-reference/messages#sets) expression.
+Supports any [seglang](https://docs.pushwoosh.com/developer/api-reference/segmentation-filters-api/segmentation-language/) expression.
 
 # process-segment
 
@@ -65,8 +65,9 @@ This tool iterates over the given CSV file and performs some action. Possible ac
 - setTags
 - unregisterDevice
 
-Example:
+*Device-type API token is required to execute the requests above.*
 
+Example:
 ```commandline
 ./process-segment -a registerDevice --app 00000-00000 export_segment_9A962-8ECD8_1666781735.csv
 ```
