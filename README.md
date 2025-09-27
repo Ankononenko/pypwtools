@@ -24,11 +24,10 @@ There are three ways to provide API Token to the scripts: using `--token` argume
 All scripts that require authorization accept `--token` argument.
 
 Example:
-*Server-type API token is required to execute the export-segment request.*
 ```commandline
 ./export-segment --token XXXXX --app 00000-00000 'A("00000-00000")'
 ```
-
+*Server-type API token is required to execute the export-segment request.*
 ### `.env` file
 Put the following content into the `.env` file to the project's directory:
 ```commandline
@@ -66,8 +65,9 @@ This tool iterates over the given CSV file and performs some action. Possible ac
 - setTags
 - unregisterDevice
 
+*Device-type API token is required to execute the requests above.*
+
 Example:
-*Device-type API token is required to execute the requests below.*
 ```commandline
 ./process-segment -a registerDevice --app 00000-00000 export_segment_9A962-8ECD8_1666781735.csv
 ```
